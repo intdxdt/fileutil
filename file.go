@@ -1,6 +1,8 @@
 package fileutil
 
-import "os"
+import (
+	"os"
+)
 
 func IsFile(fname string) bool{
 	info, err := os.Stat(fname)
@@ -28,5 +30,9 @@ func AreAllDir(dirs []string) bool{
 	}
 	return  bln
 }
+
+
+
+
 
 
