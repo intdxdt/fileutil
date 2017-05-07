@@ -4,7 +4,6 @@ import (
 	"os"
 	"time"
 	"fmt"
-	"resson/fileutil"
 )
 
 //is file
