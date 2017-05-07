@@ -2,16 +2,26 @@ package fileutil
 
 import (
 	"os"
+	"time"
 )
 
-func IsFile(fname string) bool{
+//is file
+func IsFile(fname string) bool {
 	info, err := os.Stat(fname)
 	if os.IsNotExist(err) {
-		return  false
+		return false
 	}
 	return info.Mode().IsRegular()
 }
 
+//modified time
+func ModTime(fname string) (time.Time, error) {
+	info, err := os.Stat(fname)
+	if os.IsNotExist(err) {
+		return time.Time{}, err
+	}
+	return info.ModTime(), nil
+}
 
 func IsDir(dirname string) bool {
 	info, err := os.Stat(dirname)
@@ -23,16 +33,10 @@ func IsDir(dirname string) bool {
 }
 
 //Are all paths directories
-func AreAllDir(dirs []string) bool{
+func AreAllDir(dirs []string) bool {
 	bln := true
-	for i:= 0 ; bln && i < len(dirs); i++{
+	for i := 0; bln && i < len(dirs); i++ {
 		bln = bln && IsDir(dirs[i])
 	}
-	return  bln
+	return bln
 }
-
-
-
-
-
-
