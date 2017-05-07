@@ -15,7 +15,7 @@ func IsFile(fname string) bool {
 }
 
 //modified time
-func ModTime(fname string) (time.Time, error) {
+func ModifiedTime(fname string) (time.Time, error) {
 	info, err := os.Stat(fname)
 	if os.IsNotExist(err) {
 		return time.Time{}, err
