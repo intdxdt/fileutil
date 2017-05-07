@@ -3,6 +3,8 @@ package fileutil
 import (
 	"os"
 	"time"
+	"fmt"
+	"resson/fileutil"
 )
 
 //is file
@@ -21,6 +23,16 @@ func ModifiedTime(fname string) (time.Time, error) {
 		return time.Time{}, err
 	}
 	return info.ModTime(), nil
+}
+
+//modified time as unix string
+func ModUnixString(fname string) (string, error) {
+	var updated int64
+	mt, err := ModifiedTime(fname)
+	if err == nil {
+		updated = mt.Unix()
+	}
+	return fmt.Sprintf("%v", updated), err
 }
 
 func IsDir(dirname string) bool {
