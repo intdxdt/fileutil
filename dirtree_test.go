@@ -16,7 +16,6 @@ func TestTree(t *testing.T) {
 		g.It("dir stats", func() {
 			s, err := NewStat("test/01")
 			g.Assert(err == nil).IsTrue()
-			g.Assert(s != nil).IsTrue()
 			g.Assert(s.IsFile()).IsFalse()
 			g.Assert(s.IsDir()).IsTrue()
 			g.Assert(s.Path() == "test/01").IsTrue()
@@ -25,7 +24,8 @@ func TestTree(t *testing.T) {
 			fmt.Println(s.Size())
 			s, err = NewStat("test/x01")
 			g.Assert(err != nil).IsTrue()
-			g.Assert(s == nil).IsTrue()
+			g.Assert(s.IsFile()).IsFalse()
+			g.Assert(s.IsDir()).IsFalse()
 
 		})
 	})

@@ -22,7 +22,7 @@ type Stat struct {
 func NewStat(fname string) (*Stat, error) {
 	info, err := os.Stat(fname)
 	if os.IsNotExist(err) {
-		return nil, err
+		return &Stat{}, err
 	}
 
 	t := isFile
