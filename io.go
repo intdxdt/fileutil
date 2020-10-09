@@ -7,12 +7,10 @@ import (
 	"os"
 )
 
-//make directory
 func MakeDirs(dir string) error {
 	return os.MkdirAll(dir, 0777)
 }
 
-//fetch annotation
 func ReadAllOfFile(fname string) (string, error) {
 	b, err := ioutil.ReadFile(fname)
 	if err != nil {
@@ -21,7 +19,6 @@ func ReadAllOfFile(fname string) (string, error) {
 	return string(b), err
 }
 
-//save text
 func SaveText(fname, data string) error {
 	w, err := os.Create(fname)
 	if err != nil {
@@ -33,7 +30,6 @@ func SaveText(fname, data string) error {
 	return err
 }
 
-//copy file
 func CopyFile(dest, src string) error {
 	r, err := os.Open(src)
 	if err != nil {

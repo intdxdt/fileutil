@@ -5,7 +5,6 @@ import (
 	"path/filepath"
 )
 
-//filter
 func filter(results *[]string, ignoreDirs []string) filepath.WalkFunc {
 	ignoreMap := make(map[string]bool)
 	for _, d := range ignoreDirs {
@@ -27,7 +26,6 @@ func filter(results *[]string, ignoreDirs []string) filepath.WalkFunc {
 	}
 }
 
-//Glob
 func Tree(directory string, ignoreDirs []string) ([]string, error) {
 	results := make([]string, 0)
 	err := filepath.Walk(directory, filter(&results, ignoreDirs))
