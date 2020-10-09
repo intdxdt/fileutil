@@ -1,10 +1,10 @@
 package fileutil
 
 import (
-	"os"
-	"log"
 	"io"
 	"io/ioutil"
+	"log"
+	"os"
 )
 
 //make directory
@@ -20,7 +20,6 @@ func ReadAllOfFile(fname string) (string, error) {
 	}
 	return string(b), err
 }
-
 
 //save text
 func SaveText(fname, data string) error {
@@ -52,4 +51,3 @@ func CopyFile(dest, src string) error {
 	_, err = io.Copy(w, r)
 	return err
 }
-

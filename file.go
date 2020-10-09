@@ -1,9 +1,9 @@
 package fileutil
 
 import (
+	"fmt"
 	"os"
 	"time"
-	"fmt"
 )
 
 const (

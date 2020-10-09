@@ -1,11 +1,11 @@
 package fileutil
 
 import (
-	"os"
-	"testing"
-	"path/filepath"
-	"github.com/franela/goblin"
 	"fmt"
+	"github.com/franela/goblin"
+	"os"
+	"path/filepath"
+	"testing"
 )
 
 func TestTree(t *testing.T) {
