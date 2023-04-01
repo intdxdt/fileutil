@@ -2,7 +2,6 @@ package fileutil
 
 import (
 	"io"
-	"io/ioutil"
 	"log"
 	"os"
 )
@@ -11,8 +10,8 @@ func MakeDirs(dir string) error {
 	return os.MkdirAll(dir, 0777)
 }
 
-func ReadAllOfFile(fname string) (string, error) {
-	b, err := ioutil.ReadFile(fname)
+func ReadAllOfFile(filename string) (string, error) {
+	b, err := os.ReadFile(filename)
 	if err != nil {
 		return "", err
 	}

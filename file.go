@@ -18,8 +18,8 @@ type Stat struct {
 	_type   int
 }
 
-func NewStat(fname string) (*Stat, error) {
-	info, err := os.Stat(fname)
+func NewStat(filename string) (*Stat, error) {
+	info, err := os.Stat(filename)
 	if os.IsNotExist(err) {
 		return &Stat{}, err
 	}
@@ -30,7 +30,7 @@ func NewStat(fname string) (*Stat, error) {
 	}
 
 	return &Stat{
-		path:    fname,
+		path:    filename,
 		size:    info.Size(),
 		modTime: info.ModTime().Unix(),
 		_type:   t,
@@ -59,8 +59,8 @@ func (s *Stat) ModTimeAsString() string {
 	return fmt.Sprintf("%v", s.ModTime())
 }
 
-func IsFile(fname string) bool {
-	info, err := os.Stat(fname)
+func IsFile(filename string) bool {
+	info, err := os.Stat(filename)
 	if os.IsNotExist(err) {
 		return false
 	}
@@ -76,17 +76,17 @@ func IsDir(dirname string) bool {
 	return bln
 }
 
-func ModifiedTime(fname string) (time.Time, error) {
-	info, err := os.Stat(fname)
+func ModifiedTime(filename string) (time.Time, error) {
+	info, err := os.Stat(filename)
 	if os.IsNotExist(err) {
 		return time.Time{}, err
 	}
 	return info.ModTime(), nil
 }
 
-func ModUnixString(fname string) (string, error) {
+func ModUnixString(filename string) (string, error) {
 	var updated int64
-	mt, err := ModifiedTime(fname)
+	mt, err := ModifiedTime(filename)
 	if err == nil {
 		updated = mt.Unix()
 	}
